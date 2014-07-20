@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net"
-	"strings"
 )
 
 const CONNECTIONS = 10
@@ -17,13 +16,7 @@ func handleError(err error, message string) {
 func readResponse(conn net.Conn, solved chan byte) {
 	buf := make([]byte, 1024)
 	conn.Read(buf)
-
-	if strings.Contains(fmt.Sprintf("%s", buf), "ERROR") {
-		fmt.Println("FAILED")
-	} else {
-		fmt.Printf("%s", buf)
-	}
-
+	fmt.Printf("%s", buf)
 	solved <- 1
 }
 
@@ -34,7 +27,6 @@ func main() {
 	for i := 0; i < CONNECTIONS; i++ {
 		conn, err := net.Dial("tcp", "127.0.0.1:1234")
 		handleError(err, "Unable to connect")
-
 		go readResponse(conn, solved)
 	}
 
