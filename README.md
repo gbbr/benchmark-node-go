@@ -1,13 +1,12 @@
-benchmark-node-go
-=================
+### NodeJS vs Go Concurrent Network Performance Benchmark
 
-Benchmarking Concurrent Network Performance
+Test scenario is as follows:
 
-Server opens TCP port 1234 and replies to any connection with "X" after 1 second wait time.
+A TCP server (written in Go, and compiled) is provided, which opens port 1234 and welcomes connections. Each client that connects gets sent the byte value of the character "X" after a 1 second wait time, after which the client gets disconnected.
 
-Start server by running the `server/server` binary (or `node server/server.js` to use the NodeJS server)
+To start the server run the `server` binary that is located inside the server folder. A NodeJS version of the server is also provided.
 
-After the server is running, run the tests using `node testRunner.js`
+After the server is started, run the tests using `node testRunner.js`. Number of connections in test can be changed by altering the `CONNECTIONS` constant inside each of the tests. There is also a limit on the OS as to how many TCP connections area allowed at any given time, to change this, see: http://stackoverflow.com/questions/7578594/how-to-increase-limits-on-sockets-on-osx-for-load-testing
 
 Some results I've obtained for 5000 connections are below:
 
