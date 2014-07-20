@@ -1,6 +1,7 @@
 var CONNECTIONS = 200,
 	net = require("net"),
-	completed = 0;
+	completed = 0,
+	startTime = new Date().getTime();
 
 for (var i = 0; i < CONNECTIONS; i++) {
 	var client = net.createConnection({ port: 1234 })
@@ -11,6 +12,7 @@ for (var i = 0; i < CONNECTIONS; i++) {
 		} else {
 			process.stdout.write(data.toString());
 			if (++completed === CONNECTIONS) {
+				console.log("Time: ", (new Date().getTime() - startTime) / 1000 + "s");
 				process.exit(0);
 			}
 		}

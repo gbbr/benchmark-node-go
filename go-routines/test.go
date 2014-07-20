@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net"
+	"time"
 )
 
 const CONNECTIONS = 200
@@ -23,6 +24,7 @@ func readResponse(conn net.Conn, solved chan byte) {
 func main() {
 	var count uint32 = 0
 	solved := make(chan byte)
+	startTime := time.Now()
 
 	for i := 0; i < CONNECTIONS; i++ {
 		conn, err := net.Dial("tcp", "127.0.0.1:1234")
@@ -36,4 +38,6 @@ func main() {
 			break
 		}
 	}
+
+	fmt.Printf("Time: %s\n", time.Now().Sub(startTime).String())
 }

@@ -9,10 +9,11 @@ var exec = require("child_process").exec,
 
 (function nextTest(number) {
 	process.stdout.write(tests[number].name);
-	var startTime = new Date().getTime();
 
 	exec(tests[number].cmd, function (err, stdout, stderr) {
-		console.log((new Date().getTime() - startTime) / 1000 + "s");
+		
+			console.log(stdout);
+		
 		if (number < tests.length - 1) {
 			nextTest(++number);
 		}
