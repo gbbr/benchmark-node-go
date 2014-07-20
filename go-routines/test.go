@@ -21,7 +21,7 @@ func readResponse(conn net.Conn, solved chan byte) {
 }
 
 func main() {
-	var count byte = 0
+	var count uint32 = 0
 	solved := make(chan byte)
 
 	for i := 0; i < CONNECTIONS; i++ {
@@ -31,7 +31,7 @@ func main() {
 	}
 
 	for {
-		count += <-solved
+		count += uint32(<-solved)
 		if count == CONNECTIONS {
 			break
 		}
