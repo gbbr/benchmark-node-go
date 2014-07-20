@@ -1,0 +1,14 @@
+{
+  "name": "node-workers",
+  "description": "Concurrency test",
+  "main": "test.js",
+  "dependencies": {
+    "webworker-threads": "~0.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
