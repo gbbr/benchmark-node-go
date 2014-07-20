@@ -1,4 +1,4 @@
-var CONNECTIONS = 10,
+var CONNECTIONS = 100,
 	net = require("net"),
 	completed = 0;
 

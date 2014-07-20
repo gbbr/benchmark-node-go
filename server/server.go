@@ -16,6 +16,7 @@ func handleClient(c net.Conn) {
 	// Wait 1 second and send reply "X"
 	time.Sleep(time.Second * 1)
 	c.Write([]byte("X"))
+	c.Close()
 }
 
 func main() {

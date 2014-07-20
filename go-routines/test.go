@@ -5,7 +5,7 @@ import (
 	"net"
 )
 
-const CONNECTIONS = 10
+const CONNECTIONS = 100
 
 func handleError(err error, message string) {
 	if err != nil {
