@@ -2,7 +2,7 @@
 
 Test scenario is as follows:
 
-A TCP server (written in Go, and compiled) is provided, which opens port 1234 and welcomes connections. Each client that connects gets sent the byte value of the character "X" after a 1 second wait time, after which the client gets disconnected.
+A TCP server (written in Go, and compiled) is provided, which opens port 1234 and welcomes connections. Each client that connects gets sent the byte value of the character "X" after a 1 second wait time, followed by disconnection.
 
 To start the server run the `server` binary that is located inside the server folder. A NodeJS version of the server is also provided.
 
