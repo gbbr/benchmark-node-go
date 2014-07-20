@@ -11,7 +11,7 @@ After the server is running, run the tests using `node testRunner.js`
 
 Some results I've obtained for 5000 connections are below:
 
-| NodeJS        | Go           |
+| Go        | NodeJS           |
 | ------------- |:-------------:|
 | 1.076 sec      | 1.356 sec |
 | 1.072 sec      | 1.352 sec      |
