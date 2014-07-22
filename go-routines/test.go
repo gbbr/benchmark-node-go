@@ -3,9 +3,12 @@ package main
 import (
 	"fmt"
 	"net"
+	"sync"
 )
 
 const CONNECTIONS = 200
+
+var w sync.WaitGroup
 
 func handleError(err error, message string) {
 	if err != nil {
@@ -17,11 +20,12 @@ func readResponse(conn net.Conn, solved chan byte) {
 	buf := make([]byte, 1024)
 	conn.Read(buf)
 	fmt.Printf("%s", buf)
-	solved <- 1
+	w.Done()
 }
 
 func main() {
-	var count uint32 = 0
+	w.Add(CONNECTIONS)
+
 	solved := make(chan byte)
 
 	for i := 0; i < CONNECTIONS; i++ {
@@ -30,10 +34,5 @@ func main() {
 		go readResponse(conn, solved)
 	}
 
-	for {
-		count += uint32(<-solved)
-		if count == CONNECTIONS {
-			break
-		}
-	}
+	w.Wait()
 }
